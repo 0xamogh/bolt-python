@@ -23,9 +23,9 @@ class IgnoringSelfEvents(Middleware):
         auth_result = req.context.authorize_result
         if self._is_self_event(auth_result, req.context.user_id, req.body):
             print("This is a self event")
-#             self._debug_log(req.body)
-#             return req.context.ack()
-#         else:
+            self._debug_log(req.body)
+            return req.context.ack()
+        else:
             return next()
 
     # -----------------------------------------
