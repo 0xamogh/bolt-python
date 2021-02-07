@@ -19,5 +19,5 @@ class AsyncIgnoringSelfEvents(IgnoringSelfEvents, AsyncMiddleware):
             print("This is a self event")
 #             self._debug_log(req.body)
 #             return await req.context.ack()
-#         else:
+        else:
             return await next()
