@@ -372,6 +372,7 @@ class App:
                         return middleware_resp
                     # The last listener middleware didn't call next() method.
                     # This means the listener is not for this incoming request.
+                    print("Next was not called")
                     continue
 
                 if middleware_resp is not None:
@@ -386,6 +387,8 @@ class App:
                 )
                 if listener_response is not None:
                     return listener_response
+                else:
+                    print("Listener response is none")
 
         self._framework_logger.warning(warning_unhandled_request(req))
         return BoltResponse(status=404, body={"error": "unhandled request"})
