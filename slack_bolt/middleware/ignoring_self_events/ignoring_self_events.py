@@ -39,13 +39,7 @@ class IgnoringSelfEvents(Middleware):
     def _is_self_event(
         cls, auth_result: AuthorizeResult, user_id: str, body: Dict[str, Any]
     ):
-        return (
-            auth_result is not None
-            and user_id is not None
-            and user_id == auth_result.bot_user_id
-            and body.get("event") is not None
-            and body.get("event", {}).get("type") not in cls.events_that_should_be_kept
-        )
+        return False
 
     def _debug_log(self, body: dict):
         if self.logger.level <= logging.DEBUG:
